@@ -1,0 +1,66 @@
+<section class="columns">
+  <div class="column is-half is-offset-one-quarter">
+    <form [formGroup]="form">
+    <div *ngIf="verificarStatus;then t1 else t2"></div>
+    <ng-template #t1>
+      <h1 class="title">Adicione uma transação</h1>
+    </ng-template>
+
+    <ng-template #t2>
+      <h1 class="title">Edite uma transação</h1>
+    </ng-template>
+
+      <div class="field">
+        <label class="label">Nome do Cliente:</label>
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="text" placeholder="Nome" formControlName="nomeCliente">
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="field">
+        <label class="label">Número da Conta:</label>
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="number" placeholder="Número da conta" formControlName="contaCliente">
+          <span class="icon is-small is-left">
+            <i class="fas fa-credit-card"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="field">
+        <label class="label">Valor da Transação:</label>
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="number" placeholder="Valor da Transação" formControlName="valorTransacao">
+          <span class="icon is-small is-left">
+            <i class="fas fa-hand-holding-usd"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="btn-group">
+        <div *ngIf="verificarStatus;then Adicionar else Alterar"></div>
+        <ng-template #Adicionar>
+          <button class="button is-success" (click)="modificar()">Adicionar</button>
+        </ng-template>
+        <ng-template #Alterar>
+          <button class="button is-success" (click)="modificar()">Alterar</button>
+        </ng-template>
+
+        <button class="button is-danger" routerLink="/home">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+</section>
